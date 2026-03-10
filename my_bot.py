@@ -33,6 +33,8 @@ def should_i_respond(user_message, user_name):
     return True
   elif user_message == "achoo":
     return True
+  elif user_message == "Let's play tic tac toe":
+    return True
   else:
     return False
 
@@ -50,13 +52,14 @@ def respond(user_message, user_name):
     return "My name is botboy!"
   elif user_message == "Say pi":
     return "3.141592653589793238462643383279 ... I forgot the rest... sorry"
-  elif "Pick a number" in user_message: ############
+  elif "Pick a number" in user_message:
     numbers = "0123456789"
     i = 1
     for letter in user_message:
       if user_message[-i] in numbers:
         i = i + 1
       else:
+        first_upper_index = i
         break
     Upper_Limit = user_message[(-i + 1):]
     for letter in user_message:
@@ -64,7 +67,7 @@ def respond(user_message, user_name):
         i = i + 1
       else:
         break
-    Lower_Limit = user_message[(-i + 1):-(i + 4)]
+    Lower_Limit = user_message[(-(i + 4)):-(first_upper_index + 4)]
     random_number = pick_number(Lower_Limit, Upper_Limit)
     return f"A random number between {Lower_Limit} and {Upper_Limit} is {random_number}"
   elif user_message == "What's the time?":
